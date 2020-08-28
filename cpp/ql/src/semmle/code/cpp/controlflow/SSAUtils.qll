@@ -240,7 +240,7 @@ library class SSAHelper extends int {
   /** Holds if SSA variable `(v, def)` reaches the end of block `b`. */
   cached
   predicate ssaDefinitionReachesEndOfBB(StackVariable v, ControlFlowNode def, BasicBlock b) {
-    live_at_exit_of_bb(v, b) and ssaDefReachesRank(v, def, b, lastRank(v, b))
+    ssaDefReachesRank(v, def, b, lastRank(v, b))
     or
     exists(BasicBlock idom |
       ssaDefinitionReachesEndOfBB(v, def, idom) and
